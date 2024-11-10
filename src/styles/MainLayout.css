@@ -1,0 +1,16 @@
+.mainlayout_container{
+    background-color: #F4F5F9;
+    padding: 10px;
+}
+.split_view{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+
+.mainlayout_container_body{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 30px;
+}
