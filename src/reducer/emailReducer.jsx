@@ -15,21 +15,23 @@ export const actions = {
   SET_FILTERED_EMAILS: 'SET_FILTERED_EMAILS',
 }
 
+
+
 export const emailReducer = (state, action) => {
   switch (action.type) {
-    case action.SET_EMAILS:
+    case 'SET_EMAILS':
       return { ...state, emails: action.payload }
 
-    case (action.SET_SELECTED_EMAIL_ID):
+    case 'SET_SELECTED_EMAIL_ID':
     return { ...state, selectedEmailId:action.payload }
 
-    case (action.SET_EMAIL_BODY):
+    case 'SET_EMAIL_BODY':
     return {...state,emailBodyContent:action.payload}
 
-    case (action.SET_MAIL_SELECTED):
+    case 'SET_MAIL_SELECTED':
     return {...state,mailSelected:action.payload}
 
-    case (action.SET_FILTERED_EMAILS):
+    case 'SET_FILTERED_EMAILS':
     return {...state,filteredEmails:action.payload}
 
     default:

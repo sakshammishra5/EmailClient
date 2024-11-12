@@ -13,7 +13,7 @@ const EmailList = () => {
   function SelectMail(id, index) {
     dispatch({ type: actions.SET_SELECTED_EMAIL_ID, payload: id });
     dispatch({ type: actions.SET_MAIL_SELECTED, payload: true });
-    let updatedEmails = emails.map((item, i) => index === i ? { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
+    let updatedEmails = emails.map((item, i) => index === i ?  { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
     dispatch({ type: actions.SET_EMAILS, payload: updatedEmails })
   }
 

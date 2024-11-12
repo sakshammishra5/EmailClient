@@ -9,7 +9,6 @@ import { actions } from '../reducer/EmailReducer'
 
 const MainLayout = () => {
 const contextObj =useContext(emailContext)
-console.log(contextObj)
 const {dispatch,mailSelected,selectedEmailId}=contextObj
 
   useEffect(() => {
@@ -29,7 +28,6 @@ const {dispatch,mailSelected,selectedEmailId}=contextObj
   useEffect(() => {
     const getEmailBody = async () => {
         try {
-          console.log("get email body")
           const emailBody = await fetchEmailBody(selectedEmailId);
           dispatch({type:actions.SET_EMAIL_BODY,payload:emailBody})
         }
@@ -40,7 +38,7 @@ const {dispatch,mailSelected,selectedEmailId}=contextObj
       if(selectedEmailId){
         getEmailBody()
       }
-  }, [])
+  }, [selectedEmailId])
 
 
   return (
