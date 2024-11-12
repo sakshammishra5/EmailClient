@@ -1,30 +1,34 @@
 import React, { useContext } from 'react'
 import '../styles/EmailList.css'
 import EmailItem from './EmailItem'
-import { EmailContext } from '../layouts/MainLayout'
+import { emailContext } from '../context/EmailContext'
+import { actions } from '../reducer/EmailReducer'
+
 
 
 const EmailList = () => {
-  const contextValue = useContext(EmailContext)
-  const { emails, setSelectedEmailId, setEmails, setMailSelected } = contextValue
+  const contextValue = useContext(emailContext)
+  const { dispatch, emails,filteredEmails } = contextValue
 
-  function SelectMail(id) {
-    setSelectedEmailId(id),
-    setMailSelected(true),
-    setEmails(prev => prev.map((item, index) => index === id ? { ...item, isSelected: true } : { ...item, isSelected: false }));
+  function SelectMail(id, index) {
+    dispatch({ type: actions.SET_SELECTED_EMAIL_ID, payload: id });
+    dispatch({ type: actions.SET_MAIL_SELECTED, payload: true });
+    let updatedEmails = emails.map((item, i) => index === i ? { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
+    dispatch({ type: actions.SET_EMAILS, payload: updatedEmails })
   }
 
   if (emails.length <= 0) return <div>Loading...</div>
 
   return (
     <div>
-      {emails.map((item, index) =>
+      {filteredEmails.map((item, index) =>
         <EmailItem
           key={item.id}
           item={item}
           SelectMail={SelectMail}
           isSelected={item.isSelected}
-          id={index}
+          id={item.id}
+          index={index}
         />)}
     </div>
   )

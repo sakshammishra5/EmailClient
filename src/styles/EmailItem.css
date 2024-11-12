@@ -44,3 +44,7 @@
 .emailItem_detail_dateAndTime span {
 margin: 0 5px;
 }
+
+.emailItem_detail span>.emailItem_Favourite_btn {
+    color: #E54065;
+}

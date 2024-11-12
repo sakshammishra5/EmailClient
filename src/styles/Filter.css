@@ -6,6 +6,13 @@
 
 .filterContainer button {
     border: none;
-    background-color: #f4f5f9;
+    /* background-color: #f4f5f9; */
     cursor: pointer;
+}
+
+.selectedFilter_style{
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background-color: #E1E4EA;
 }

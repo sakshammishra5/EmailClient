@@ -1,11 +1,20 @@
 import React, { useContext } from 'react'
 import '../styles/EmailBody.css'
-import { EmailContext } from '../layouts/MainLayout'
+import parse from 'html-react-parser';
+import { actions } from '../reducer/EmailReducer';
+import { emailContext } from '../context/EmailContext';
 
 const EmailBody = () => {
-  const contextValue = useContext(EmailContext)
-  const { EmailBody,setEmailBody } = contextValue
-  if (EmailBody == null) return <div>Loading...</div>
+  const contextValue = useContext(emailContext)
+  const {dispatch,emailBodyContent,emails} = contextValue
+
+  if (emailBodyContent == null) return <div>Loading...</div>
+
+  const handleFavouriteEmail=(id)=>{
+   let updatedEmails= emails.map((item)=>(item.id==id && !(item.isFavourite))?{...item,isFavourite:true}:{...item})
+   dispatch({type:actions.SET_EMAILS,payload:updatedEmails})
+  }
+
   return (
     <div className='emailBody'>
       <header className='emailBody_header'>
@@ -19,12 +28,12 @@ const EmailBody = () => {
             </div>
           </div>
         </div>
-        <button className='emailBody_header_favouriteBtn'>
+        <button className='emailBody_header_favouriteBtn' onClick={()=>handleFavouriteEmail(emailBodyContent.id)} >
           Mark as favourite
         </button>
       </header>
       <main className='emailBody_body'>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quo alias, excepturi rerum vitae eum nemo dolorem obcaecati fuga? Minus quo velit eveniet. Illo neque similique maiores facere ab ex!
+        {parse(emailBodyContent.body)}
       </main>
     </div>
   )
