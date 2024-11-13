@@ -6,23 +6,26 @@ import Filter from '../components/Filter'
 import { fetchEmailBody, fetchEmailList } from '../services/api'
 import { emailContext } from '../context/EmailContext'
 import { actions } from '../reducer/EmailReducer'
+import { updateFetchedEmails } from '../services/helper'
+import Pagination from '../components/Pagination'
 
 const MainLayout = () => {
 const contextObj =useContext(emailContext)
-const {dispatch,mailSelected,selectedEmailId}=contextObj
+const {dispatch,mailSelected,selectedEmailId,currentPage}=contextObj
 
   useEffect(() => {
     const getEmails = async () => {
       try {
-        const emailList = await fetchEmailList()
-        dispatch({type:actions.SET_EMAILS,payload:emailList})
-        dispatch({type:actions.SET_FILTERED_EMAILS,payload:emailList})
+        const emailList = await fetchEmailList(currentPage)
+        const updatedMail= updateFetchedEmails(emailList)
+        dispatch({type:actions.SET_EMAILS,payload:updatedMail})
+        dispatch({type:actions.SET_FILTERED_EMAILS,payload:updatedMail})
       } catch (error) {
         console.error("Error fetching emails:", error);
       }
     }
     getEmails();
-  }, [])
+  }, [currentPage])
 
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const {dispatch,mailSelected,selectedEmailId}=contextObj
 {     mailSelected &&   <div className='mainlayout_container_body'>
           <EmailBody />
         </div>}
+        <Pagination/>
       </div>
   )
 }

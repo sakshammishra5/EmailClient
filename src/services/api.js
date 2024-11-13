@@ -1,5 +1,5 @@
-export const fetchEmailList = async () => {
-    const response = await fetch(`https://flipkart-email-mock.now.sh/?page=${1}`)
+export const fetchEmailList = async (currentPage) => {
+    const response = await fetch(`https://flipkart-email-mock.now.sh/?page=${currentPage}`)
     if (!response.ok) throw new Error('failed to fetch the emails')
     const data = await response.json();
     return data.list;

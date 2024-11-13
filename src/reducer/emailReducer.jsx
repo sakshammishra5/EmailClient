@@ -5,6 +5,7 @@ export const initialState = {
   emailBodyContent: null,
   mailSelected: false,
   filteredEmails: [],
+  currentPage: 1,
 };
 
 export const actions = {
@@ -13,6 +14,7 @@ export const actions = {
   SET_EMAIL_BODY: 'SET_EMAIL_BODY',
   SET_MAIL_SELECTED: 'SET_MAIL_SELECTED',
   SET_FILTERED_EMAILS: 'SET_FILTERED_EMAILS',
+  SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
 }
 
 
@@ -33,6 +35,9 @@ export const emailReducer = (state, action) => {
 
     case 'SET_FILTERED_EMAILS':
     return {...state,filteredEmails:action.payload}
+
+    case 'SET_CURRENT_PAGE':
+      return {...state,currentPage:action.payload}
 
     default:
     return state

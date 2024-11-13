@@ -12,6 +12,7 @@ const EmailBody = () => {
 
   const handleFavouriteEmail=(id)=>{
    let updatedEmails= emails.map((item)=>(item.id==id && !(item.isFavourite))?{...item,isFavourite:true}:{...item})
+   localStorage.setItem('persistentMail',JSON.stringify(updatedEmails))
    dispatch({type:actions.SET_EMAILS,payload:updatedEmails})
   }
 
