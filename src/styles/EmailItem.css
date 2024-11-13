@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.ReadEmail{
+    background-color: #F2F2F2;
+}
+
 .selected{
     border: 1px solid #E54065;
 }

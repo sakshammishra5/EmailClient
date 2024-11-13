@@ -10,6 +10,9 @@ const Filter = () => {
   
     function handleClick(filterString) {
         setfilterState(filterString)
+        dispatch({type:actions.SET_MAIL_SELECTED,payload:false})
+        dispatch({type:actions.SET_SELECTED_EMAIL_ID,payload:false})
+
     }
 
     useEffect(() => {
@@ -21,7 +24,7 @@ const Filter = () => {
         }
         )
         dispatch({type:actions.SET_FILTERED_EMAILS,payload:filteredMail})
-    }, [filterState])
+    }, [filterState,emails])
 
     return (
         <div className='filterContainer'>
