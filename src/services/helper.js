@@ -2,7 +2,6 @@
 export const updateFetchedEmails = (fetchedEmails) => {
     // Get local emails from local storage
     const localEmails = JSON.parse(localStorage.getItem('persistentMail')) || [];
-  console.log(localEmails)
     // Map through the fetched emails and update them if they exist in local storage
     const updatedEmails = fetchedEmails.map(fetchedEmail => {
       // Find the corresponding local email by email ID

@@ -25,7 +25,7 @@ const {dispatch,mailSelected,selectedEmailId,currentPage}=contextObj
       }
     }
     getEmails();
-  }, [currentPage])
+  }, [])
 
 
   useEffect(() => {

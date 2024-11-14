@@ -8,21 +8,21 @@ import { actions } from '../reducer/EmailReducer'
 
 const EmailList = () => {
   const contextValue = useContext(emailContext)
-  const { dispatch, emails,filteredEmails } = contextValue
+  const { dispatch, emails, filteredEmails, currentPage } = contextValue
 
   function SelectMail(id) {
     dispatch({ type: actions.SET_SELECTED_EMAIL_ID, payload: id });
     dispatch({ type: actions.SET_MAIL_SELECTED, payload: true });
-    let updatedEmails = emails.map((item) => item.id === id ?  { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
+    let updatedEmails = emails.map((item) => item.id === id ? { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
     dispatch({ type: actions.SET_EMAILS, payload: updatedEmails })
-    localStorage.setItem('persistentMail',JSON.stringify(updatedEmails))
+    localStorage.setItem('persistentMail', JSON.stringify(updatedEmails))
   }
 
   if (emails.length <= 0) return <div>Loading...</div>
 
   return (
     <div>
-      {filteredEmails.map((item, index) =>
+      {filteredEmails.slice(currentPage * 10 - 10, currentPage * 10).map((item, index) =>
         <EmailItem
           key={item.id}
           item={item}
