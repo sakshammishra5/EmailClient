@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import '../styles/EmailList.css'
 import EmailItem from './EmailItem'
 import { emailContext } from '../context/EmailContext'
-import { actions } from '../reducer/EmailReducer'
+import { actions } from '../reducer/emailReducer'
 
 
 const EmailList = () => {

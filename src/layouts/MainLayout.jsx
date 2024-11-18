@@ -5,7 +5,7 @@ import '../styles/MainLayout.css'
 import Filter from '../components/Filter'
 import { fetchEmailBody, fetchEmailList } from '../services/api'
 import { emailContext } from '../context/EmailContext'
-import { actions } from '../reducer/EmailReducer'
+import { actions } from '../reducer/emailReducer'
 import { updateFetchedEmails } from '../services/helper'
 import Pagination from '../components/Pagination'
 

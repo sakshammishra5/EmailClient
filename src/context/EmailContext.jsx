@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext, useReducer } from "react";
-import { emailReducer, initialState } from "../reducer/EmailReducer";
+import { emailReducer, initialState } from "../reducer/emailReducer";
 
 export const emailContext=createContext()
 

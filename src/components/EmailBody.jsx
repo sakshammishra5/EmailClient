@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import '../styles/EmailBody.css'
 import parse from 'html-react-parser';
-import { actions } from '../reducer/EmailReducer';
+import { actions } from '../reducer/emailReducer';
 import { emailContext } from '../context/EmailContext';
 import { convertDate } from '../services/helper';
 

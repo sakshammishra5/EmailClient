@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "../styles/Filter.css"
 import { emailContext } from '../context/EmailContext'
-import { actions } from '../reducer/EmailReducer'
+import { actions } from '../reducer/emailReducer'
 
 const Filter = () => {
     const contextObj=useContext(emailContext)

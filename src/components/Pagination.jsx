@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { emailContext } from '../context/EmailContext'
-import { actions } from '../reducer/EmailReducer'
+import { actions } from '../reducer/emailReducer'
 import '../styles/Pagination.css'
 
 const Pagination = () => {
