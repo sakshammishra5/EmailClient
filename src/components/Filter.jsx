@@ -16,6 +16,7 @@ const Filter = () => {
     }
 
     useEffect(() => {
+         dispatch({type:actions.SET_CURRENT_PAGE,payload:1})
       const filteredMail= emails.filter((item) => {
             if (filterState == "unread") return !(item.isRead)
             if (filterState == "read") return (item.isRead)

@@ -7,7 +7,7 @@ export const emailContext=createContext()
 const EmailContext = ({children}) => {
     const [stateObj,dispatch]=useReducer(emailReducer,initialState)
 
-    console.log("Updated state in context provider:", stateObj);
+
   return (
     <emailContext.Provider value={{...stateObj,dispatch}}>
       {children}

@@ -5,20 +5,20 @@ import { emailContext } from '../context/EmailContext'
 import { actions } from '../reducer/EmailReducer'
 
 
-
 const EmailList = () => {
   const contextValue = useContext(emailContext)
   const { dispatch, emails, filteredEmails, currentPage } = contextValue
 
-  function SelectMail(id) {
-    dispatch({ type: actions.SET_SELECTED_EMAIL_ID, payload: id });
+  function SelectMail(id,mailDetails) {
     dispatch({ type: actions.SET_MAIL_SELECTED, payload: true });
+    dispatch({ type: actions.SET_SELECTED_EMAIL_ID, payload: id });
+    dispatch({type:actions.SET_SELECTED_MAIL_DETAILS,payload:mailDetails})
     let updatedEmails = emails.map((item) => item.id === id ? { ...item, isSelected: true, isRead: true } : { ...item, isSelected: false })
     dispatch({ type: actions.SET_EMAILS, payload: updatedEmails })
     localStorage.setItem('persistentMail', JSON.stringify(updatedEmails))
   }
 
-  if (emails.length <= 0) return <div>Loading...</div>
+  if (filteredEmails.length === 0) return <div>No emails found</div>
 
   return (
     <div>

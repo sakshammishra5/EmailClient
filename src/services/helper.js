@@ -22,3 +22,12 @@ export const updateFetchedEmails = (fetchedEmails) => {
   
     return updatedEmails;
   };
+
+
+
+  // Function to convert date to a readable format
+
+  export const convertDate = (timestamp) => {
+    let date = new Date(timestamp).toLocaleString()
+    return date;
+  }
